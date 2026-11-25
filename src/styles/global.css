@@ -29,6 +29,7 @@ main {
   );
 
   --font-heading: 'Outfit Variable', sans-serif;
+  --font-body: 'Outfit Variable', system-ui, sans-serif;
 }
 
 body {
@@ -44,6 +45,7 @@ body {
 
   background: var(--bg);
   color: var(--fg);
+  font-family: var(--font-body);
 }
 
 
@@ -154,6 +156,33 @@ nav a:hover {
   }
 }
 
+@media (max-width: 40rem) {
+  body {
+    padding: 1.25rem;
+  }
+
+  header {
+    padding-bottom: 1rem;
+  }
+
+  nav {
+    gap: 1.25rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+  }
+
+  .logo {
+    width: 110px;
+  }
+
+  h1 {
+    margin-top: 2rem;
+  }
+}
+
 
 /* Footer */
 footer {
@@ -168,4 +197,19 @@ footer {
 
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.45);
+}
+
+.commit {
+  font-family: ui-monospace, monospace;
+}
+
+.commit a {
+  color: inherit;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.commit a:hover {
+  color: var(--fg);
 }

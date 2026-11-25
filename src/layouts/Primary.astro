@@ -1,4 +1,5 @@
 ---
+import { execSync } from 'node:child_process';
 import '../styles/global.css';
 import '../styles/animations.css';
 import '../styles/themes.css';
@@ -14,6 +15,7 @@ const imageUrl = new URL(image, Astro.site ?? 'https://as2bax.dev').href;
 const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://as2bax.dev').href;
 
 const year = new Date().getFullYear();
+const commit = execSync('git rev-parse --short HEAD').toString().trim();
 ---
 
 <html lang="en">
@@ -21,7 +23,7 @@ const year = new Date().getFullYear();
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
 
         <title>{title}</title>
@@ -61,7 +63,7 @@ const year = new Date().getFullYear();
         </main>
 
         <footer>
-            <span>© {year} As2Bax</span>
+            <span>© {year} As2Bax · <span class="commit"><a href={`https://github.com/As2Bax/as2baxdotdev/commit/${commit}`} target="_blank" rel="noopener noreferrer">{commit}</a></span></span>
 
             <button class="theme-btn" type="button" aria-label="Change accent colors">
                 <span class="theme-swatch"></span>
