@@ -1,0 +1,82 @@
+---
+import '../styles/global.css';
+import '../styles/animations.css';
+import '../styles/themes.css';
+import '@fontsource-variable/outfit';
+
+const { title = 'As2Bax' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{title}</title>
+
+        <script is:inline>
+            document.documentElement.dataset.theme = localStorage.getItem('theme') || 'rainbow';
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <a href="/" class="logo-link">
+                <img src="/img/logo.png" alt="as2bax" class="logo" />
+            </a>
+
+            <nav>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <slot /> <!-- Content goes here -->
+        </main>
+
+        <footer>
+            <span>© {year} As2Bax</span>
+
+            <button class="theme-btn" type="button" aria-label="Change accent colors">
+                <span class="theme-swatch"></span>
+            </button>
+        </footer>
+    </body>
+</html>
+
+<script>
+    // Animations
+    document.querySelectorAll<HTMLElement>('main > *').forEach((el, i) => {
+        el.style.setProperty('--i', String(i + 1));
+    });
+
+    // Theming
+    const themes = [
+        'rainbow', 'trans', 'bi', 'pan',
+        'nonbinary', 'lesbian', 'ace', 'aro',
+        'genderfluid', 'agender', 'progress', 'intersex',
+    ];
+
+    const btn = document.querySelector<HTMLElement>('.theme-btn');
+    const label = document.querySelector<HTMLElement>('.theme-name');
+
+    const apply = (theme: string) => {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem('theme', theme);
+
+        if (label) label.textContent = theme;
+    };
+
+    apply(document.documentElement.dataset.theme || 'rainbow');
+
+    btn?.addEventListener('click', () => {
+        const current = themes.indexOf(document.documentElement.dataset.theme || 'rainbow');
+
+        apply(themes[(current + 1) % themes.length]);
+    });
+</script>

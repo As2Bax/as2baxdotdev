@@ -1,0 +1,140 @@
+[data-theme='trans'] {
+  --bands: linear-gradient(
+    90deg,
+    #7fc8e8 0 20%,
+    #e8a0b4 20% 40%,
+    #f2f2f2 40% 60%,
+    #e8a0b4 60% 80%,
+    #7fc8e8 80% 100%
+  );
+}
+
+[data-theme='bi'] {
+  --bands: linear-gradient(
+    90deg,
+    #d4678f 0 40%,
+    #a07ab5 40% 60%,
+    #6b8fd4 60% 100%
+  );
+}
+
+[data-theme='pan'] {
+  --bands: linear-gradient(
+    90deg,
+    #e0529a 0 33.33%,
+    #f2d34e 33.33% 66.66%,
+    #5ab4e8 66.66% 100%
+  );
+}
+
+[data-theme='nonbinary'] {
+  --bands: linear-gradient(
+    90deg,
+    #f2e05a 0 25%,
+    #f2f2f2 25% 50%,
+    #a07ab5 50% 75%,
+    #2b2b2b 75% 100%
+  );
+}
+
+[data-theme='lesbian'] {
+  --bands: linear-gradient(
+    90deg,
+    #d4663f 0 20%,
+    #e8a07c 20% 40%,
+    #f2f2f2 40% 60%,
+    #d78cb5 60% 80%,
+    #b0507f 80% 100%
+  );
+}
+
+[data-theme='ace'] {
+  --bands: linear-gradient(
+    90deg,
+    #2b2b2b 0 25%,
+    #a3a3a3 25% 50%,
+    #f2f2f2 50% 75%,
+    #8a5fa8 75% 100%
+  );
+}
+
+[data-theme='aro'] {
+  --bands: linear-gradient(
+    90deg,
+    #5fae6e 0 20%,
+    #a8d68f 20% 40%,
+    #f2f2f2 40% 60%,
+    #a3a3a3 60% 80%,
+    #2b2b2b 80% 100%
+  );
+}
+
+[data-theme='genderfluid'] {
+  --bands: linear-gradient(
+    90deg,
+    #f09ab8 0 20%,
+    #f2f2f2 20% 40%,
+    #b05fc8 40% 60%,
+    #2b2b2b 60% 80%,
+    #5a7fd4 80% 100%
+  );
+}
+
+[data-theme='agender'] {
+  --bands: linear-gradient(
+    90deg,
+    #2b2b2b 0 14.28%,
+    #a3a3a3 14.28% 28.56%,
+    #f2f2f2 28.56% 42.84%,
+    #a8d68f 42.84% 57.12%,
+    #f2f2f2 57.12% 71.4%,
+    #a3a3a3 71.4% 85.68%,
+    #2b2b2b 85.68% 100%
+  );
+}
+
+[data-theme='progress'] {
+  --bands: linear-gradient(
+    90deg,
+    #f2f2f2 0 12.5%,
+    #f09ab8 12.5% 25%,
+    #7fc8e8 25% 37.5%,
+    #6b4a3a 37.5% 50%,
+    #e5877f 50% 62.5%,
+    #e8a87c 62.5% 75%,
+    #e6cf8b 75% 87.5%,
+    #8fcf9f 87.5% 100%
+  );
+}
+
+[data-theme='intersex'] {
+  --bands: linear-gradient(
+    90deg,
+    #e6cf8b 0 50%,
+    #8a5fa8 50% 100%
+  );
+}
+
+
+.theme-btn {
+  padding: 0.5rem 1.25rem;
+
+  border: 0;
+  border-radius: 1rem;
+  outline: 2px solid rgba(255, 255, 255, 0.12);
+  outline-offset: 2px;
+
+  background: var(--bands);
+  color: var(--bg);
+
+  font: inherit;
+  font-weight: 500;
+  text-transform: capitalize;
+  cursor: pointer;
+
+  transition: filter 0.3s ease;
+}
+
+.theme-btn:hover {
+  filter: brightness(1.1);
+}

@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Primary.astro';
+import '../styles/projects.css';
+
+const projects = [
+    {
+        name: 'PFRI: Codename REDUX',
+        desc: 'A massive-sized Roblox game dedicated to controlling & maintaining the Proton Reactor Mark 3.',
+        images: ['/img/projects/pfri-1.png', '/img/projects/pfri-2.png', '/img/projects/pfri-3.jpg', '/img/projects/pfri-4.jpg'],
+        href: 'https://www.roblox.com/games/9165821457'
+    },
+    {
+        name: 'OnlyOneMessage',
+        desc: 'A feature-rich Discord bot that allows full management over text channels, including permanent slowmodes, logging & more.',
+        images: ['/img/projects/oom-1.png', '/img/projects/oom-2.png', '/img/projects/oom-3.png'],
+        href: 'https://onlyonemessage.as2bax.dev'
+    },
+        {
+        name: 'PONGETITIVE',
+        desc: 'Pong, taken too seriously. Events, power-ups, competitive opponents and more.',
+        images: ['/img/projects/pong-1.png', '/img/projects/pong-2.png'],
+        href: 'https://github.com/As2Bax/PONGETITIVE'
+    },
+];
+---
+
+<Layout title="Projects - as2bax.dev">
+    <h1>Projects</h1>
+    <div class="line"></div>
+
+    <div class="project-cards">
+        {projects.map((project) => (
+            <article class="project-card">
+                <div class="project-media" data-slideshow>
+                    {project.images.map((src, i) => (
+                        <img
+                            src={src}
+                            alt={`${project.name} ${i + 1}`}
+                            class={i === 0 ? 'slide active' : 'slide'}
+                        />
+                    ))}
+
+                    {project.images.length > 1 && (
+                        <button class="slide-btn prev" type="button" aria-label="Previous image">‹</button>
+                        <button class="slide-btn next" type="button" aria-label="Next image">›</button>
+
+                        <div class="slide-dots">
+                            {project.images.map((_, i) => (
+                                <span class={i === 0 ? 'dot active' : 'dot'}></span>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                <div class="project-info">
+                    <h2>{project.name}</h2>
+                    <p>{project.desc}</p>
+
+                    {project.href && (
+                        <a class="project-link" href={project.href} target="_blank" rel="noopener noreferrer">
+                            Learn more <span aria-hidden="true">→</span>
+                        </a>
+                    )}
+                </div>
+            </article>
+        ))}
+    </div>
+</Layout>
+
+<script>
+    document.querySelectorAll<HTMLElement>('[data-slideshow]').forEach((show) => {
+        const slides = show.querySelectorAll('.slide');
+        const dots = show.querySelectorAll('.dot');
+        let current = 0;
+        let timer: number | undefined;
+
+        const go = (n: number) => {
+            slides[current].classList.remove('active');
+            dots[current]?.classList.remove('active');
+
+            current = (n + slides.length) % slides.length;
+
+            slides[current].classList.add('active');
+            dots[current]?.classList.add('active');
+        };
+
+        const start = () => {
+            if (slides.length < 2) return;
+
+            stop();
+            timer = window.setInterval(() => go(current + 1), 4000);
+        };
+
+        const stop = () => window.clearInterval(timer);
+
+        show.querySelector('.prev')?.addEventListener('click', () => go(current - 1));
+        show.querySelector('.next')?.addEventListener('click', () => go(current + 1));
+
+        show.addEventListener('mouseenter', stop);
+        show.addEventListener('mouseleave', start);
+
+        start();
+    });
+</script>
