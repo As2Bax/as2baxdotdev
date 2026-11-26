@@ -1,4 +1,4 @@
-.project-cards {
+.work-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 1.5rem;
@@ -6,8 +6,10 @@
   margin-top: 3rem;
 }
 
-.project-card {
+.work-card {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   border: 2px solid rgba(255, 255, 255, 0.12);
   border-radius: 1rem;
@@ -15,11 +17,11 @@
   transition: border-color 0.3s ease;
 }
 
-.project-card:hover {
+.work-card:hover {
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-.project-media {
+.work-media {
   position: relative;
   overflow: hidden;
 
@@ -77,7 +79,7 @@
   background: rgba(17, 17, 17, 0.85);
 }
 
-.project-media:hover .slide-btn {
+.work-media:hover .slide-btn {
   opacity: 1;
 }
 
@@ -106,11 +108,15 @@
   background: var(--fg);
 }
 
-.project-info {
+.work-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+
   padding: 1.25rem 1.5rem 1.5rem;
 }
-
-.project-info h2 {
+.work-info h2 {
   margin: 0;
 
   font-family: var(--font-heading);
@@ -118,17 +124,17 @@
   font-size: 1.5rem;
 }
 
-.project-info p {
-  margin: 0.75rem 0 0;
+.work-info p {
+  margin: 0.75rem 0 1.25rem;
   font-size: 1rem;
 }
 
-.project-link {
+.work-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 
-  margin-top: 1.25rem;
+  margin-top: auto;
   padding: 0.5rem 1rem;
 
   border: 2px solid rgba(255, 255, 255, 0.12);
@@ -141,15 +147,30 @@
   transition: border-color 0.3s ease, color 0.3s ease;
 }
 
-.project-link span {
+.work-link span {
   transition: transform 0.3s ease;
 }
 
-.project-link:hover {
+.work-link:hover {
   border-color: rgba(255, 255, 255, 0.3);
   color: var(--fg);
 }
 
-.project-link:hover span {
+.work-link:hover span {
   transform: translateX(3px);
+}
+
+.work-role {
+  display: inline-block;
+
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.75rem;
+
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8125rem;
+  font-weight: 450;
+  line-height: 1.2;
 }

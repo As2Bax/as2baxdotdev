@@ -1,63 +1,76 @@
 ---
 import Layout from '../layouts/Primary.astro';
-import '../styles/projects.css';
+import '../styles/work.css';
 
-const projects = [
+const work = [
     {
         name: 'PFRI: Codename REDUX',
+        role: 'Lead Director',
         desc: 'A massive-sized Roblox game dedicated to controlling & maintaining the Proton Reactor Mark 3.',
-        images: ['/img/projects/pfri-1.png', '/img/projects/pfri-2.png', '/img/projects/pfri-3.jpg', '/img/projects/pfri-4.jpg'],
+        images: ['/img/work/pfri-1.png', '/img/work/pfri-2.png', '/img/work/pfri-3.jpg', '/img/work/pfri-4.jpg'],
         href: 'https://www.roblox.com/games/9165821457'
     },
     {
         name: 'OnlyOneMessage',
+        role: 'Lead Developer',
         desc: 'A feature-rich Discord bot that allows full management over text channels, including permanent slowmodes, logging & more.',
-        images: ['/img/projects/oom-1.png', '/img/projects/oom-2.png', '/img/projects/oom-3.png'],
+        images: ['/img/work/oom-1.png', '/img/work/oom-2.png', '/img/work/oom-3.png'],
         href: 'https://onlyonemessage.as2bax.dev'
     },
-        {
+    {
         name: 'PONGETITIVE',
+        role: 'Lead Developer',
         desc: 'Pong, taken too seriously. Events, power-ups, competitive opponents and more.',
-        images: ['/img/projects/pong-1.png', '/img/projects/pong-2.png'],
+        images: ['/img/work/pong-1.png', '/img/work/pong-2.png'],
         href: 'https://github.com/As2Bax/PONGETITIVE'
     },
+    {
+        name: 'Object Show Elevator',
+        role: 'Building, Testing & Scripting',
+        desc: 'A casual Roblox random elevator game based on object shows such as BFDI, II, and more!',
+        images: ['/img/work/ose-1.png', '/img/work/ose-2.png', '/img/work/ose-3.png', '/img/work/ose-4.png'],
+        href: 'https://www.roblox.com/games/17321542904'
+    },
+    
 ];
 ---
 
-<Layout title="Projects - as2bax.dev">
-    <h1>Projects</h1>
+<Layout title="Work - as2bax.dev">
+    <h1>Work</h1>
     <div class="line"></div>
 
-    <div class="project-cards">
-        {projects.map((project) => (
-            <article class="project-card">
-                <div class="project-media" data-slideshow>
-                    {project.images.map((src, i) => (
+    <div class="work-cards">
+        {work.map((work) => (
+            <article class="work-card">
+                <div class="work-media" data-slideshow>
+                    {work.images.map((src, i) => (
                         <img
                             src={src}
-                            alt={`${project.name} ${i + 1}`}
+                            alt={`${work.name} ${i + 1}`}
                             class={i === 0 ? 'slide active' : 'slide'}
                         />
                     ))}
 
-                    {project.images.length > 1 && (
+                    {work.images.length > 1 && (
                         <button class="slide-btn prev" type="button" aria-label="Previous image">‹</button>
                         <button class="slide-btn next" type="button" aria-label="Next image">›</button>
 
                         <div class="slide-dots">
-                            {project.images.map((_, i) => (
+                            {work.images.map((_, i) => (
                                 <span class={i === 0 ? 'dot active' : 'dot'}></span>
                             ))}
                         </div>
                     )}
                 </div>
 
-                <div class="project-info">
-                    <h2>{project.name}</h2>
-                    <p>{project.desc}</p>
+                <div class="work-info">
+                    {work.role && <span class="work-role">{work.role}</span>}
 
-                    {project.href && (
-                        <a class="project-link" href={project.href} target="_blank" rel="noopener noreferrer">
+                    <h2>{work.name}</h2>
+                    <p>{work.desc}</p>
+
+                    {work.href && (
+                        <a class="work-link" href={work.href} target="_blank" rel="noopener noreferrer">
                             Learn more <span aria-hidden="true">→</span>
                         </a>
                     )}

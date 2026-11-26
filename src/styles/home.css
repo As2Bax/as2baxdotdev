@@ -1,5 +1,5 @@
 /* Experience cards */
-.exp-cards {
+.experience-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -7,7 +7,7 @@
   margin-top: 3rem;
 }
 
-.exp-card {
+.experience-card {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
   border-radius: 1rem;
 }
 
-.exp-card img {
+.experience-card img {
   width: 2.25rem;
   height: 2.25rem;
   object-fit: contain;
@@ -30,7 +30,7 @@
   transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.exp-card:hover img {
+.experience-card:hover img {
   filter: grayscale(0);
   opacity: 1;
 }

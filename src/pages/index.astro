@@ -2,13 +2,13 @@
 import Layout from '../layouts/Primary.astro';
 import '../styles/home.css';
 
-const exp = [
-    { name: 'Luau', img: '/img/exp/luau.png' },
-    { name: 'Python', img: '/img/exp/python.png' },
-    { name: 'JavaScript', img: '/img/exp/javascript.png' },
-	{ name: 'Docker', img: '/img/exp/docker.svg' },
-	{ name: 'HTML5', img: '/img/exp/html5.svg' },
-	{ name: 'Astro', img: '/img/exp/astro.png' },
+const experience = [
+    { name: 'Luau', img: '/img/experience/luau.png' },
+    { name: 'Python', img: '/img/experience/python.png' },
+    { name: 'JavaScript', img: '/img/experience/javascript.png' },
+	{ name: 'Docker', img: '/img/experience/docker.svg' },
+	{ name: 'HTML5', img: '/img/experience/html5.svg' },
+	{ name: 'Astro', img: '/img/experience/astro.png' },
 ];
 
 const links = [
@@ -23,7 +23,7 @@ const links = [
 
 	<p>
 		I'm As2Bax, you may also know me as Linode or Vqel.
-		I taught myself how to code in <b>2020</b> with the Luau language and I've been expanding ever since.
+		I taught myself how to code in <b>2020</b> with the Luau language and I've been experienceanding ever since.
 	</p>
 
 	<p>
@@ -40,9 +40,9 @@ const links = [
 		Want to get in touch? You can either DM me on Discord <i>(@vqel)</i> or email <a href="mailto:me@as2bax.dev">me@as2bax.dev</a>!
 	</p>
 
-	<div class="exp-cards">
-		{exp.map((item) => (
-			<div class="exp-card" title={item.name}>
+	<div class="experience-cards">
+		{experience.map((item) => (
+			<div class="experience-card" title={item.name}>
 				<img src={item.img} alt={item.name} />
 			</div>
 		))}
