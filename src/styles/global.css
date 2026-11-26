@@ -3,6 +3,7 @@
 }
 
 main {
+  position: relative;
   flex: 1;
   padding-bottom: 6rem;
 }

@@ -56,4 +56,69 @@ const links = [
 			</a>
 		))}
 	</div>
+
+	<div class="clock">
+		<button class="clock-btn" type="button" aria-describedby="clock-tip">
+			<span id="clock-time"></span><small id="clock-ampm"></small>
+		</button>
+
+		<div class="clock-tip" id="clock-tip" role="tooltip"></div>
+	</div>
 </Layout>
+
+<script>
+	const zone = 'America/Chicago';
+
+	const timeEl = document.querySelector<HTMLElement>('#clock-time');
+	const ampmEl = document.querySelector<HTMLElement>('#clock-ampm');
+	const tipEl = document.querySelector<HTMLElement>('#clock-tip');
+
+	const offsetOf = (tz: string, date: Date) => {
+		const list = new Intl.DateTimeFormat('en-US', {
+			timeZone: tz,
+			hourCycle: 'h23',
+			year: 'numeric',
+			month: 'numeric',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric',
+		}).formatToParts(date);
+
+		const get = (type: string) => Number(list.find((p) => p.type === type)?.value);
+
+		const asUtc = Date.UTC(get('year'), get('month') - 1, get('day'), get('hour'), get('minute'), get('second'));
+
+		return Math.round((asUtc - Math.floor(date.getTime() / 1000) * 1000) / 60000);
+	};
+
+	const tick = () => {
+		const now = new Date();
+
+        const list = new Intl.DateTimeFormat('en-US', {
+            timeZone: zone,
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true,
+            timeZoneName: 'short',
+        }).formatToParts(now);
+
+		const get = (type: string) => list.find((p) => p.type === type)?.value ?? '';
+
+		const diff = -now.getTimezoneOffset() - offsetOf(zone, now);
+		const hours = Math.abs(diff) / 60;
+		const amount = Number.isInteger(hours) ? hours : hours.toFixed(1);
+
+		if (timeEl) timeEl.textContent = `${get('hour')}:${get('minute')}`;
+        if (ampmEl) ampmEl.textContent = `${get('dayPeriod')} ${get('timeZoneName')}`;
+
+		if (tipEl) {
+			tipEl.textContent = diff === 0
+				? "You're in the same timezone as me!"
+				: `You're ${amount} hour${amount !== 1 ? 's' : ''} ${diff > 0 ? 'ahead of me' : 'behind me'}`;
+		}
+	};
+
+	tick();
+	setInterval(tick, 1000);
+</script>

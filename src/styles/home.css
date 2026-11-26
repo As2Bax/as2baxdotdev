@@ -81,3 +81,79 @@
   filter: grayscale(0);
   opacity: 1;
 }
+
+
+/* Clock */
+.clock {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin-top: 1rem;
+}
+
+.clock-btn {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+
+  padding: 0;
+
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.65);
+
+  font: inherit;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  cursor: default;
+
+  transition: color 0.2s ease;
+}
+
+.clock-btn small {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.clock:hover .clock-btn,
+.clock-btn:focus {
+  color: var(--fg);
+}
+
+.clock-tip {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 10;
+
+  padding: 0.5rem 0.9rem;
+
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  background: var(--bg);
+  color: rgba(255, 255, 255, 0.85);
+
+  font-size: 0.875rem;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.4rem);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.clock:hover .clock-tip,
+.clock-btn:focus + .clock-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 40rem) {
+  .clock {
+    display: none;
+  }
+}
