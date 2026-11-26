@@ -28,13 +28,11 @@ const commit = execSync('git rev-parse --short HEAD').toString().trim();
 
         <title>{title}</title>
 
-        <meta name="description" content={description} />
         <meta name="theme-color" content="#e5877f" />
 
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="as2bax.dev" />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={imageUrl} />
 
